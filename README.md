@@ -8,7 +8,8 @@ Creating an EMR Cluster in AWS is a very simple process, you need to acces to ht
 
 1. **Software Configuration Section**: select
 
-``` Spark: Spark 2.4.5 on Hadoop 2.8.5 YARN and Zeppelin 0.8.2
+``` 
+Spark: Spark 2.4.5 on Hadoop 2.8.5 YARN and Zeppelin 0.8.2
 ```
 2. **Hardware Configuration Section**: select instances of type m5a.4xlar with 16 cores and 64 GB of RAM and try to compute the number of instances according to the size of the result. Each instance creates automatically a local HDFS of the same size of the RAM.
 
