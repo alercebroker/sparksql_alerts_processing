@@ -4,14 +4,14 @@
 
 ### Creating a cluster
 
-Creating an EMR Cluster in AWS is a very simple process, you need to acces to https://console.aws.amazon.com/elasticmapreduce and be aware the following parameters:
+Creating an EMR Cluster in AWS is a very simple process, you need to acces to https://console.aws.amazon.com/elasticmapreduce and be aware of the following parameters:
 
-1. **Software Configuration Section**: select
+1. **Software Configuration Section**: select the spark application to be installed
 
 ``` 
 Spark: Spark 2.4.5 on Hadoop 2.8.5 YARN and Zeppelin 0.8.2
 ```
-2. **Hardware Configuration Section**: select instances of type m5a.4xlar with 16 cores and 64 GB of RAM and try to compute the number of instances according to the size of the result. Each instance creates automatically a local HDFS of the same size of the RAM.
+2. **Hardware Configuration Section**: select instances of type m5a.4xlarge with 16 cores and 64 GB of RAM and try to compute the number of instances according to the size of the result. Each instance creates automatically a local HDFS of the same size of the RAM.
 
 ### Configuration
 
@@ -61,3 +61,21 @@ For example, for extracting metadata from all the ZTF historical data you can us
 1. Bash Script: https://github.com/alercebroker/ztf_historic_data/blob/master/extract_detections.sh
 
 2. Pyspark Script: https://github.com/alercebroker/ztf_historic_data/blob/master/extract_detections.py
+
+It is worth noting that data is going to be store in the HDFS of the EMR Cluster in order to manage that information you can use the Hadoop command lines:
+
+- Compute Size
+
+```
+hdfs dfs -du -h -s TARGET
+```
+- Remove Directory
+
+```
+hdfs dfs -rm -r TARGET
+```
+- Copy to local directory
+
+```
+hdfs dfs -copyToLocal ORIGIN DESTINATION
+```
