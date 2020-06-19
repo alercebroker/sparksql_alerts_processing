@@ -4,9 +4,40 @@
 
 ### Creating a cluster
 
-https://console.aws.amazon.com/elasticmapreduce
+Creating an EMR Cluster in AWS is a very simple process, you need to acces to https://console.aws.amazon.com/elasticmapreduce and be aware the following parameters:
+
+1. **Software Configuration Section**: select
+
+``` Spark: Spark 2.4.5 on Hadoop 2.8.5 YARN and Zeppelin 0.8.2
+```
+2. **Hardware Configuration Section**: select instances of type m5a.4xlar with 16 cores and 64 GB of RAM and try to compute the number of instances according to the size of the result. Each instance creates automatically a local HDFS of the same size of the RAM.
 
 ### Configuration
+
+In order to access the AWS S3 Bucket **s3://ztf-avro** where ZTF historical data is located you will need to configure:
+
+1. **AWS Key and Pass**:  add to **.bashrc** the following lines related with your AWS account
+
+```
+AWS_ACCESS_KEY_ID=XXX
+AWS_SECRET_ACCESS_KEY=XXX
+```
+
+2. **AVRO spark package**: add to **/etc/spark/conf/spark-default.conf** the following line
+
+```
+spark.jars.packages             org.apache.spark:spark-avro_2.11:2.4.5
+```
+If you want to use **ipython** to work interactively with **pyspark**, please follow the instructions:
+
+1. Install ipython: ```sudo pip3 install ipython```
+2. Edit .bashrc:
+
+```
+export PYSPARK_DRIVER_PYTHON=ipython3
+export PYSPARK_PYTHON=python3
+```
+3. Execute: ```source .bashrc``` 
 
 ## Standalone
 
