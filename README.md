@@ -74,7 +74,7 @@ hdfs dfs -du -h -s TARGET
 ```
 hdfs dfs -rm -r TARGET
 ```
-- Copy to local directory
+- Copy to local Directory
 
 ```
 hdfs dfs -copyToLocal ORIGIN DESTINATION
