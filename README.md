@@ -42,7 +42,7 @@ export PYSPARK_PYTHON=python3
 
 ## Processing ZTF Alerts
 
-#Interactive mode with **pyspark**
+# Interactive mode with **pyspark**
 
 You can execute **pypsark** using **ipython** as the Python driver. Inside **ipython** you can access ZTF historical data executing:
 
@@ -51,7 +51,7 @@ df = spark.read.load("s3a://ztf-avro/*")
 ```
 For further documentation on how to use SparSQL and DataFrames please visit: https://spark.apache.org/docs/latest/sql-getting-started.html.
 
-#Submitting a task with **spark-submit**
+# Submitting a task with **spark-submit**
 
 For sending a task to the cluster in terms of batch processing you could use **spark-submit**.
 
