@@ -48,7 +48,7 @@ export PYSPARK_PYTHON=python3
 You can execute **pypsark** using **ipython** as the Python driver. Inside **ipython** you can access ZTF historical data executing:
 
 ```
-df = spark.read.load("s3a://ztf-avro/*")
+df = spark.read.format("avro").load("s3a://ztf-avro/*")
 ```
 For further documentation on how to use SparSQL and DataFrames please visit: https://spark.apache.org/docs/latest/sql-getting-started.html.
 
