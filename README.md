@@ -91,7 +91,7 @@ If you want write your output in a bucket of S3, follow the next instructions:
 4. In the view of **General Cluster Settings** write a name for your cluster. We recommend you deselect Logging and Termination protection. In additional options select **EMRFS consistent view**. Press Next button.
 5. Finally in the view of **Security** choose your pem key and enable Custom permissions. Press create cluster.
 
-When the cluster start, follow the instruction of the [configuration](https://github.com/alercebroker/sparksql_alerts_processing#configuration).
+When the cluster start, follow the instruction of the [configuration](https://github.com/alercebroker/sparksql_alerts_processing#configuration-login-with-ec2-user).
 
 For write in the bucket of S3:
 
