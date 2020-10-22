@@ -13,7 +13,7 @@ Spark: Spark 2.4.5 on Hadoop 2.8.5 YARN and Zeppelin 0.8.2
 ```
 2. **Hardware Configuration Section**: select instances of type m5a.4xlarge with 16 cores and 64 GB of RAM and try to compute the number of instances according to the size of the result. Each instance creates automatically a local HDFS of the same size of the RAM.
 
-### Configuration
+### Configuration (login with ec2-user)
 
 In order to access the AWS S3 Bucket **s3://ztf-avro** where ZTF historical data is located you will need to configure in the master node:
 
@@ -43,14 +43,14 @@ export PYSPARK_PYTHON=python3
 
 ## Processing ZTF Alerts
 
-# Interactive mode with **pyspark**
+# Interactive mode with **pyspark** (login with hadoop)
 
 You can execute **pypsark** using **ipython** as the Python driver. Inside **ipython** you can access ZTF historical data executing:
 
 ```
 df = spark.read.format("avro").load("s3a://ztf-avro/*")
 ```
-For further documentation on how to use SparSQL and DataFrames please visit: https://spark.apache.org/docs/latest/sql-getting-started.html.
+For further documentation on how to use SparkSQL and DataFrames please visit: https://spark.apache.org/docs/latest/sql-getting-started.html.
 
 # Submitting a task with **spark-submit**
 
@@ -78,4 +78,23 @@ hdfs dfs -rm -r TARGET
 
 ```
 hdfs dfs -copyToLocal ORIGIN DESTINATION
+```
+
+
+# Use S3 for write output
+
+If you want write your output in a bucket of S3, follow the next instructions:
+
+1. Create a cluster with "Advance Options"a
+2. Select Hadoop 1.10.x, Spark 2.4.x and Zeppelin 0.8.2. After that press Next button.
+3. In the view of **Hardware** select your preference for the cluster. After that press Next button.
+4. In the view of **General Cluster Settings** write a name for your cluster. We recommend you deselect Logging and Termination protection. In additional options select **EMRFS consistent view**. Press Next button.
+5. Finally in the view of **Security** choose your pem key and enable Custom permissions. Press create cluster.
+
+When the cluster start, follow the instruction of the [configuration](https://github.com/alercebroker/sparksql_alerts_processing#configuration).
+
+For write in the bucket of S3:
+
+```python
+result.write.save("s3://<bucket_path>")
 ```
