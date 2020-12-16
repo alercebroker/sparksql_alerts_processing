@@ -17,14 +17,7 @@ Spark: Spark 2.4.5 on Hadoop 2.8.5 YARN and Zeppelin 0.8.2
 
 In order to access the AWS S3 Bucket **s3://ztf-avro** where ZTF historical data is located you will need to configure in the master node:
 
-1. **AWS Key and Pass**:  add to **.bashrc** the following lines related with your AWS account
-
-```
-AWS_ACCESS_KEY_ID=XXX
-AWS_SECRET_ACCESS_KEY=XXX
-```
-
-2. **AVRO spark package**: add to **/etc/spark/conf/spark-default.conf** the following line
+1. **AVRO spark package**: add to **/etc/spark/conf/spark-default.conf** the following line
 
 ```
 spark.jars.packages             org.apache.spark:spark-avro_2.11:2.4.5
